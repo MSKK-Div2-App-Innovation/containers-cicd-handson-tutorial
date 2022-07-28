@@ -6,6 +6,7 @@
 - 午後
 
 # Description
+- アーキテクチャ図
 - TODO
 
 # Requirment
@@ -15,12 +16,12 @@
 
 # Session
 - 午前
-  1. Step1
-  2. Step2
+  1. ステップ1
+  2. ステップ2
   *
 - 午後
-  1. Step1
-  2. Step2
+  1. ステップ1
+  2. ステップ2
 
 # Document
 
