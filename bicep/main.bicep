@@ -16,7 +16,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 }
 
 module containerRegistry 'containerregistry.bicep' = {
-  name: 'containerregistry-deploy'
+  name: 'containerregistry-deployment'
   params: {
     location: location
     acrName: acrName
@@ -25,18 +25,18 @@ module containerRegistry 'containerregistry.bicep' = {
 }
 
 module loganalytics 'loganalytics.bicep' = {
-  name: 'loganalytics-deploy'
+  name: 'loganalytics-deployment'
   params: {
     location: location
-    name: 'la-demo-containerapp'
+    name: 'log-demo-containerapp'
   }
   scope: rg
 }
 
 module containerenv 'containerenv.bicep' = {
-  name: 'containerenv-deploy'
+  name: 'containerappsenvironment-deployment'
   params: {
-    name: 'ce-demo-containerapp'
+    name: 'cae-demo-containerapp'
     location: location
     logAnalyticsName: loganalytics.outputs.name
   }
@@ -44,9 +44,9 @@ module containerenv 'containerenv.bicep' = {
 }
 
 module containerAppApi 'containerapp.bicep' = {
-  name: 'containerapp-api-deploy'
+  name: 'containerapp-api-deployment'
   params: {
-    name: 'ca-demo-apiapp'
+    name: 'ctapp-demo-api'
     location: location
     envName: containerenv.outputs.name
     ingressEnabled: true
@@ -58,9 +58,9 @@ module containerAppApi 'containerapp.bicep' = {
 }
 
 module containerAppUi 'containerapp.bicep' = {
-  name: 'containerapp-ui-deploy'
+  name: 'containerapp-ui-deployment'
   params: {
-    name: 'ca-demo-uiapp'
+    name: 'ctapp-demo-ui'
     location: location
     envName: containerenv.outputs.name
     ingressEnabled: true
