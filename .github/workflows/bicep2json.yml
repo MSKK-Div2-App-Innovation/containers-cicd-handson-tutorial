@@ -1,3 +1,4 @@
+name: Convert ARM template from Bicep to JSON
 on:
   push:
     branches:
