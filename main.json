@@ -1,0 +1,499 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.9.1.41621",
+      "templateHash": "9900496858548638292"
+    }
+  },
+  "parameters": {
+    "resourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "リソース グループ名"
+      }
+    },
+    "acrNamePrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure Container Registry リソース名のプレフィックス"
+      },
+      "maxLength": 37,
+      "minLength": 5
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[deployment().location]"
+    }
+  },
+  "variables": {
+    "acrName": "[format('{0}{1}', parameters('acrNamePrefix'), uniqueString(subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2021-04-01",
+      "name": "[parameters('resourceGroupName')]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "containerregistry-deployment",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "acrName": {
+            "value": "[variables('acrName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.9.1.41621",
+              "templateHash": "16765887674031938032"
+            }
+          },
+          "parameters": {
+            "acrName": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.ContainerRegistry/registries",
+              "apiVersion": "2022-02-01-preview",
+              "name": "[parameters('acrName')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Basic"
+              },
+              "properties": {
+                "adminUserEnabled": true
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "loganalytics-deployment",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "name": {
+            "value": "log-demo-containerapp"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.9.1.41621",
+              "templateHash": "16312555429505284223"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.OperationalInsights/workspaces",
+              "apiVersion": "2021-12-01-preview",
+              "name": "[parameters('name')]",
+              "location": "[parameters('location')]"
+            }
+          ],
+          "outputs": {
+            "workspaceId": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('name'))).customerId]"
+            },
+            "name": {
+              "type": "string",
+              "value": "[parameters('name')]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "containerappsenvironment-deployment",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "name": {
+            "value": "cae-demo-containerapp"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "logAnalyticsName": {
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'loganalytics-deployment')).outputs.name.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.9.1.41621",
+              "templateHash": "2323378564613106494"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "logAnalyticsName": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.App/managedEnvironments",
+              "apiVersion": "2022-03-01",
+              "name": "[parameters('name')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "appLogsConfiguration": {
+                  "destination": "log-analytics",
+                  "logAnalyticsConfiguration": {
+                    "customerId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('logAnalyticsName')), '2021-12-01-preview').customerId]",
+                    "sharedKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', parameters('logAnalyticsName')), '2021-12-01-preview').primarySharedKey]"
+                  }
+                }
+              }
+            }
+          ],
+          "outputs": {
+            "defaultDomain": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.App/managedEnvironments', parameters('name'))).defaultDomain]"
+            },
+            "name": {
+              "type": "string",
+              "value": "[parameters('name')]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'loganalytics-deployment')]",
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "containerapp-api-deployment",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "name": {
+            "value": "ctapp-demo-api"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "envName": {
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'containerappsenvironment-deployment')).outputs.name.value]"
+          },
+          "ingressEnabled": {
+            "value": true
+          },
+          "ingressTargetPort": {
+            "value": 80
+          },
+          "externalIngressEnabled": {
+            "value": true
+          },
+          "imageName": {
+            "value": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.9.1.41621",
+              "templateHash": "17849697436334621854"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string"
+            },
+            "envName": {
+              "type": "string"
+            },
+            "imageName": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "env": {
+              "type": "array",
+              "defaultValue": []
+            },
+            "daprAppId": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "ingressEnabled": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "ingressTargetPort": {
+              "type": "int",
+              "defaultValue": 8000
+            },
+            "externalIngressEnabled": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "daprAppPort": {
+              "type": "int",
+              "defaultValue": 3500
+            },
+            "secretName": {
+              "type": "string",
+              "defaultValue": "[format('reg-pswd-{0}', newGuid())]"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.App/containerApps",
+              "apiVersion": "2022-03-01",
+              "name": "[parameters('name')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "configuration": {
+                  "dapr": "[if(empty(parameters('daprAppId')), createObject(), createObject('enabled', true(), 'appId', parameters('daprAppId'), 'appPort', parameters('daprAppPort')))]",
+                  "ingress": "[if(parameters('ingressEnabled'), createObject('external', parameters('externalIngressEnabled'), 'targetPort', parameters('ingressTargetPort')), null())]"
+                },
+                "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+                "template": {
+                  "containers": [
+                    {
+                      "name": "[format('{0}-container', parameters('name'))]",
+                      "env": "[parameters('env')]",
+                      "image": "[parameters('imageName')]",
+                      "resources": {
+                        "cpu": "0.5",
+                        "memory": "1Gi"
+                      }
+                    }
+                  ],
+                  "scale": {
+                    "minReplicas": 1,
+                    "maxReplicas": 10
+                  }
+                }
+              }
+            }
+          ],
+          "outputs": {
+            "appuri": {
+              "type": "string",
+              "value": "[if(parameters('ingressEnabled'), format('{0}{1}.{2}', parameters('name'), if(parameters('externalIngressEnabled'), '.internal', ''), reference(resourceId('Microsoft.App/managedEnvironments', parameters('envName')), '2022-03-01').defaultDomain), '')]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'containerappsenvironment-deployment')]",
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "containerapp-ui-deployment",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "name": {
+            "value": "ctapp-demo-ui"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "envName": {
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'containerappsenvironment-deployment')).outputs.name.value]"
+          },
+          "ingressEnabled": {
+            "value": true
+          },
+          "ingressTargetPort": {
+            "value": 80
+          },
+          "externalIngressEnabled": {
+            "value": true
+          },
+          "imageName": {
+            "value": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.9.1.41621",
+              "templateHash": "17849697436334621854"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string"
+            },
+            "envName": {
+              "type": "string"
+            },
+            "imageName": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "env": {
+              "type": "array",
+              "defaultValue": []
+            },
+            "daprAppId": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "ingressEnabled": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "ingressTargetPort": {
+              "type": "int",
+              "defaultValue": 8000
+            },
+            "externalIngressEnabled": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "daprAppPort": {
+              "type": "int",
+              "defaultValue": 3500
+            },
+            "secretName": {
+              "type": "string",
+              "defaultValue": "[format('reg-pswd-{0}', newGuid())]"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.App/containerApps",
+              "apiVersion": "2022-03-01",
+              "name": "[parameters('name')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "configuration": {
+                  "dapr": "[if(empty(parameters('daprAppId')), createObject(), createObject('enabled', true(), 'appId', parameters('daprAppId'), 'appPort', parameters('daprAppPort')))]",
+                  "ingress": "[if(parameters('ingressEnabled'), createObject('external', parameters('externalIngressEnabled'), 'targetPort', parameters('ingressTargetPort')), null())]"
+                },
+                "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+                "template": {
+                  "containers": [
+                    {
+                      "name": "[format('{0}-container', parameters('name'))]",
+                      "env": "[parameters('env')]",
+                      "image": "[parameters('imageName')]",
+                      "resources": {
+                        "cpu": "0.5",
+                        "memory": "1Gi"
+                      }
+                    }
+                  ],
+                  "scale": {
+                    "minReplicas": 1,
+                    "maxReplicas": 10
+                  }
+                }
+              }
+            }
+          ],
+          "outputs": {
+            "appuri": {
+              "type": "string",
+              "value": "[if(parameters('ingressEnabled'), format('{0}{1}.{2}', parameters('name'), if(parameters('externalIngressEnabled'), '.internal', ''), reference(resourceId('Microsoft.App/managedEnvironments', parameters('envName')), '2022-03-01').defaultDomain), '')]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'containerappsenvironment-deployment')]",
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]"
+      ]
+    }
+  ]
+}
