@@ -63,7 +63,7 @@
       
       <br>
 
-    3. 同ページの `[Create repository from template]` ボタンをクリックしてご自身の GitHub アカウントに `containerapps-albumui` リポジトリが作成されたことを確認します
+    3. 同ページの `[Create repository from template]` ボタンをクリックしてご自身の GitHub アカウントに `containerapps-albumapi-javascript` リポジトリが作成されたことを確認します
  
 -  **UI アプリ**
    - 同様の作業を以下のリポジトリに対しても行います
