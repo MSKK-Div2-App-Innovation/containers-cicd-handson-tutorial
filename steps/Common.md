@@ -11,7 +11,6 @@
 
    - [**GitHub**](https://github.com/join)
 
-<br><br>
 
 
 ## 2. ローカル開発環境
@@ -27,13 +26,11 @@
 
       -[**Azure CLI 更新する方法**](https://docs.microsoft.com/ja-jp/cli/azure/update-azure-cli)
 
-      もし、何らかの事情でローカル環境で Azure CLI が使用できない場合は、Azure ポータルから Azure Cloud Shell を使用することができます。
+      何らかの事情でローカル環境で Azure CLI が使用できない場合は、Azure ポータルから Azure Cloud Shell を使用することができます。
 
       使い方については以下を参考にしてください。
 
       - [**Azure Cloud Shell の概要**](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)
-
-      　
 
    - [**Docker デスクトップ**](https://docs.docker.com/get-docker/) (※) 演習でローカルでのコンテナ アプリの実行を確認する手順を選択しない場合は必要ありません
    - [**Visual Studio Code**](https://code.visualstudio.com/Download)
