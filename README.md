@@ -33,32 +33,26 @@
 >>>
 ## 事前準備
 
-- Azureサブスクリプションの有効化
-  - *TODO*
-- GitHubアカウント [ ( 無料サインアップ URL )](https://github.com/signup)
-- Visual Studio Codeインストール [ ( 無料ダウンロード URL )](https://code.visualstudio.com/Download)
-  - Extensions のインストール
-- Gitインストール [ ( 無料ダウンロード URL )](https://git-scm.com/book/ja/v2/%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%8B-Git%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+1. [事前準備](./steps/Common.md)
 
 ## 操作手順
 
-- **共通**
-
-  1. [リポジトリのコピー](./steps/Common.md)
->>>  
-
 - **演習１**
 
-  1. [ローカルプロジェクトのコンテナ化](./steps/P1-01.md)
-  1. ステップ2
->>>
+  1. [ローカル環境でのプロジェクトの実行](./steps/P1-01.md)
+  1. [Dockerfile の追加](./steps/P1-02.md)
+  1. タスク3 - Docker イメージの作成と  Azure Container Registry への Push (**以下どちらか選択する**)
+      1. [Azure Container Registry に直接 Docker イメージを作成する演習](./steps/P1-03-a.md)
+      1. [ローカル環境で Docker イメージを生成する演習](./steps/P1-03-b.md)
+>
 - **演習２**
   
-  - 準備、リソースグループ作成 ( 演習1[リソースグループ名]-CICD )  *TODO* BICEPファイルのリンクを貼る
+  - [準備: Azure リソースを作成](./steps/P2-00.md)
 
-  1. **APIアプリ**
+  1. **API アプリ**  
+     演習１で作成した API アプリのレポジトリに対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
 
-     1. [GitHub アクション雛形作成](./steps/P2-01.md)
+     1. [GitHub アクション雛形を作成](./steps/P2-01.md)
      1. [ACR 接続情報を追加](./steps/P2-02.md)
      1. [ACR にコンテナーイメージ作成処理を追加](./steps/P2-03.md)
      1. [Deploy ジョブを追加](./steps/P2-04.md)
@@ -66,7 +60,8 @@
      1. [Container App にアプリをデプロイする処理を追加](./steps/P2-06.md)
      1. [CI/CD を体験](./steps/P2-07.md)<br><br>
 
-  1. **UIアプリ**
+  1. **UI アプリ**  
+     演習１で作成した UI アプリのレポジトリに対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
 
      1. 上記 1〜7 の手順を同様に実施<br><br>
 

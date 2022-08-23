@@ -58,7 +58,6 @@
     https://github.com/horihiro/containerapps-albumapi-javascript
 
    <img src="../images/common-03-01.png" width="500">
-
    <br>
     
     2. `Create a new project from containerapps-albumapi-javascript` 画面の各項目を以下のように設定します
@@ -70,9 +69,8 @@
          | Description (Optional) | 任意の説明 |
          | Public or Private|Private にチェック|
          | Include all branches | チェックしない|
-      
-      <br>
-
+   <br>
+    
     3. 同ページの `[Create repository from template]` ボタンをクリックしてご自身の GitHub アカウントに `containerapps-albumapi-javascript` リポジトリが作成されたことを確認します
  
 -  **UI アプリ**
