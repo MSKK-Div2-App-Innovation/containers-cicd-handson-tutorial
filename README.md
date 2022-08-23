@@ -9,7 +9,7 @@
 
 ## 全体概要
 
-- **演習１ (仮)**
+- **演習 1**
 
     1. ローカルにある、素のアプリケーションのプロジェクトを Visual Studio Code 拡張の機能を使用してコンテナ化
     1. コンテナ化されたアプリケーションを Azure Contaner Apps にデプロイ ( 方法は以下のどちらかを選択 )
@@ -17,7 +17,7 @@
        - プロジェクトを Azure Container リポジトリでコンテナ化し、そのまま Azure Contaner Apps にデプロイ
     1. Azure Container Apps にデプロイ完了後、Web ブラウザーでアクセスして動作確認<br><br>
 
-- **演習２ (仮)**
+- **演習 2**
 
     1. GitHub Actions を使用したアプリケーションのデプロイワークフローの作成 
     1. Option作業
