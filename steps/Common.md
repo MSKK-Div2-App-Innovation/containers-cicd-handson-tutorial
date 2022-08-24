@@ -67,7 +67,7 @@
          | Owner * | 自身のアカウント |
          | Repository name * | containerapps-albumapi-javascript |
          | Description (Optional) | 任意の説明 |
-         | Public or Private|Private にチェック|
+         | Public or Private|Public にチェック|
          | Include all branches | チェックしない|
    <br>
     
@@ -87,7 +87,7 @@
 
 1. Web ブラウザーでご自身の GitHub アカウントに作成したcontainerapps-albumapi-javascript のリポジトリにアクセスします
 
-2. 緑色の \[Code\] ボタンをクリックします。\[HTTPS\] タブが既定アクティブになっているので、表示されている URL をコピーボタンをクリックしてクリップボードにコピーします
+2. 緑色の \[Code\] ボタンをクリックします。\[HTTPS\] タブを既定アクティブにし、表示されている URL をコピーボタンをクリックしてクリップボードにコピーします
 
    <img src="../images/common-04-02.png" width="500">
 
