@@ -103,5 +103,5 @@
 
    ```npm install``` 
 
-   プロジェクト containerapps-albumui に対しても同様の処理を行います。
+   プロジェクト containerapps-albumui に対しても同様の処理を行います。　
 
