@@ -19,9 +19,8 @@
 
 - **演習 2**
 
+    1. IaC(ARM テンプレート) を使用した Azure リソース (Azure Container Apps 等) のデプロイ 
     1. GitHub Actions を使用したアプリケーションのデプロイワークフローの作成 
-    1. Option作業
-       - IaC(ARM テンプレート) を使用した Azure リソース (Azure Container Apps 等) のデプロイ 
     1. GitHub Actions を使用した CI/CD 環境の作成
 
 ## アーキテクチャ
@@ -37,20 +36,20 @@
 
 ## 操作手順
 
-- **演習１**
+- **演習 1**
 
   1. [ローカル環境でのプロジェクトの実行](./steps/P1-01.md)
   1. [Dockerfile の追加](./steps/P1-02.md)
-  1. タスク3 - Docker イメージの作成と  Azure Container Registry への Push (**以下どちらか選択する**)
+  1. Docker イメージの作成と  Azure Container Registry への Push (**以下どちらか選択する**)
       1. [Azure Container Registry に直接 Docker イメージを作成する演習](./steps/P1-03-a.md)
       1. [ローカル環境で Docker イメージを生成する演習](./steps/P1-03-b.md)
 >
-- **演習２**
+- **演習 2**
   
   - [準備: Azure リソースを作成](./steps/P2-00.md)
 
   1. **API アプリ**  
-     演習１で作成した API アプリのレポジトリに対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
+     演習 1 で作成した API アプリのレポジトリに対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
 
      1. [GitHub アクション雛形を作成](./steps/P2-01.md)
      1. [ACR 接続情報を追加](./steps/P2-02.md)
@@ -61,7 +60,7 @@
      1. [CI/CD を体験](./steps/P2-07.md)<br><br>
 
   1. **UI アプリ**  
-     演習１で作成した UI アプリのレポジトリに対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
+     演習 1 で作成した UI アプリのレポジトリに対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
 
      1. 上記 1〜7 の手順を同様に実施<br><br>
 
@@ -74,7 +73,7 @@
 
       - リソース グループの名前を再度入力して `[Delete (削除)]` を選択し、削除の確認
 
-  2. 「演習２」の「5. Azure 接続処理を追加」で作成したサービス プリンシパルを削除
+  2. 「演習 2」の「5. Azure 接続処理を追加」で作成したサービス プリンシパルを削除
 
 >>>
 
