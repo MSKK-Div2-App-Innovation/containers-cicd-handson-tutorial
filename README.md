@@ -56,7 +56,7 @@
      1. [ACR にコンテナーイメージ作成処理を追加](./steps/P2-03.md)
      1. [Deploy ジョブを追加](./steps/P2-04.md)
      1. [Azure 接続処理を追加](./steps/P2-05.md)
-     1. [Container App にアプリをデプロイする処理を追加](./steps/P2-06.md)
+     1. [Container App にアプリをデプロイする処理を追加](./steps/P2-06-a.md)
      1. [CI/CD を体験](./steps/P2-07.md)<br><br>
 
   1. **UI アプリ**  
