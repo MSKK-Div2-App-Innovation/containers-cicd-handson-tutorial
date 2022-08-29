@@ -54,11 +54,10 @@
 ### リポジトリのコピー
 
 - **API アプリ**
-    1. 以下の URL にアクセスし、画面内の緑色のボタン `[Use this template]` をクリックします
-    https://github.com/horihiro/containerapps-albumapi-javascript
-
-   <img src="../images/common-03-01.png" width="500">
-   <br>
+    1. 以下の URL にアクセスし、画面内の緑色のボタン `[Use this template]` をクリックします  
+      https://github.com/horihiro/containerapps-albumapi-javascript  
+      <img src="../images/common-03-01.png" width="700">
+      <br>
     
     2. `Create a new project from containerapps-albumapi-javascript` 画面の各項目を以下のように設定します
       
@@ -89,7 +88,7 @@
 
 2. 緑色の \[Code\] ボタンをクリックします。\[HTTPS\] タブをアクティブにし、表示されている URL をコピーボタンをクリックしてクリップボードにコピーします
 
-   <img src="../images/common-04-02.png" width="500">
+   <img src="../images/common-04-02.png" width="700">
 
 3. ローカルの任意のフォルダ(ディレクトリ) にターミナル(コマンド プロンプト)からアクセスし、以下のコマンドを実行します
 
