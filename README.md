@@ -1,4 +1,4 @@
-# 「触ってわかる Azure コンテナ アプリケーション CI/CD」 ハンズオン セミナー 
+# 「触ってわかる Azure コンテナ アプリケーション CI/CD」<br>ハンズオン セミナー 
 
 ## 目標
 今回のハンズオンは、参加者が本ハンズオンで得た知識をご自身のアプリケーションに応用できるようになります。 
@@ -29,7 +29,8 @@
 
   ![Handson architecture](./images/common-architecture.png)
 
->>>
+<br>
+
 ## 事前準備
 
 1. [事前準備](./steps/Common.md)
@@ -43,6 +44,7 @@
   1. Docker イメージの作成と  Azure Container Registry への Push (**以下どちらか選択する**)
       1. [Azure Container Registry に直接 Docker イメージを作成する演習](./steps/P1-03-a.md)
       1. [ローカル環境で Docker イメージを生成する演習](./steps/P1-03-b.md)
+  1. [Azure Container Apps の作成とコンテナーアプリのデプロイ](./setps/P1-04.md)
 >
 - **演習 2**
   
@@ -77,13 +79,8 @@
 
   2. 「演習 2」の「5. Azure 接続処理を追加」で作成したサービス プリンシパルを削除
 
->>>
+<br>
 
----
-
-## 参照情報
-[xxxx]()
->>>
 ---
 ## LICENSE
 
