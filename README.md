@@ -44,7 +44,7 @@
   1. Docker イメージの作成と  Azure Container Registry への Push (**以下どちらか選択する**)
       1. [Azure Container Registry に直接 Docker イメージを作成する演習](./steps/P1-03-a.md)
       1. [ローカル環境で Docker イメージを生成する演習](./steps/P1-03-b.md)
-  1. [Azure Container Apps の作成とコンテナーアプリのデプロイ](./setps/P1-04.md)
+  1. [Azure Container Apps の作成とコンテナーアプリのデプロイ](./steps/P1-04.md)
 >
 - **演習 2**
   
