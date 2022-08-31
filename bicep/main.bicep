@@ -50,7 +50,7 @@ module containerAppApi 'containerapp.bicep' = {
     location: location
     envName: containerenv.outputs.name
     ingressEnabled: true
-    ingressTargetPort: 80
+    ingressTargetPort: 3500
     externalIngressEnabled: true
     imageName: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
   }
@@ -64,7 +64,7 @@ module containerAppUi 'containerapp.bicep' = {
     location: location
     envName: containerenv.outputs.name
     ingressEnabled: true
-    ingressTargetPort: 80
+    ingressTargetPort: 3000
     externalIngressEnabled: true
     imageName: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
   }
