@@ -3,7 +3,7 @@ targetScope = 'subscription'
 @description('リソース グループ名')
 param resourceGroupName string
 @minLength(5)
-@maxLength(37)
+@maxLength(13)
 @description('Azure Container Registry リソース名のプレフィックス')
 param acrNamePrefix string
 param location string = deployment().location
@@ -50,7 +50,7 @@ module containerAppApi 'containerapp.bicep' = {
     location: location
     envName: containerenv.outputs.name
     ingressEnabled: true
-    ingressTargetPort: 3500
+    ingressTargetPort: 80
     externalIngressEnabled: true
     imageName: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
   }
@@ -64,7 +64,7 @@ module containerAppUi 'containerapp.bicep' = {
     location: location
     envName: containerenv.outputs.name
     ingressEnabled: true
-    ingressTargetPort: 3000
+    ingressTargetPort: 80
     externalIngressEnabled: true
     imageName: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
   }
