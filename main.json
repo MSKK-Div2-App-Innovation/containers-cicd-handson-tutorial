@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.9.1.41621",
-      "templateHash": "2708089031505631927"
+      "templateHash": "95174287251219006"
     }
   },
   "parameters": {
@@ -20,7 +20,7 @@
       "metadata": {
         "description": "Azure Container Registry リソース名のプレフィックス"
       },
-      "maxLength": 37,
+      "maxLength": 13,
       "minLength": 5
     },
     "location": {
@@ -257,7 +257,7 @@
             "value": true
           },
           "ingressTargetPort": {
-            "value": 3500
+            "value": 80
           },
           "externalIngressEnabled": {
             "value": true
@@ -388,7 +388,7 @@
             "value": true
           },
           "ingressTargetPort": {
-            "value": 3000
+            "value": 80
           },
           "externalIngressEnabled": {
             "value": true
