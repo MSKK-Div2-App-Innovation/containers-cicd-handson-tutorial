@@ -54,8 +54,8 @@
      演習 1 で作成した **API アプリのリポジトリ**に対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
 
      1. [GitHub アクション雛形を作成](./steps/P2-01.md)
-     1. [ACR 接続情報を追加](./steps/P2-02.md)
-     1. [ACR にコンテナーイメージ作成処理を追加](./steps/P2-03.md)
+     1. [Azure Container Registry の接続情報を追加](./steps/P2-02.md)
+     1. [Azure Container Registry にコンテナーイメージ作成処理を追加](./steps/P2-03.md)
      1. [Deploy ジョブを追加](./steps/P2-04.md)
      1. [Azure 接続処理を追加](./steps/P2-05.md)
      1. [Container App にアプリをデプロイする処理を追加](./steps/P2-06-a.md)
