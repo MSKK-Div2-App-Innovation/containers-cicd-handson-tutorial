@@ -58,14 +58,14 @@
      1. [Azure Container Registry にコンテナーイメージ作成処理を追加](./steps/P2-03.md)
      1. [Deploy ジョブを追加](./steps/P2-04.md)
      1. [Azure 接続処理を追加](./steps/P2-05.md)
-     1. [Container App にアプリをデプロイする処理を追加](./steps/P2-06-a.md)
+     1. [Azure Container Apps にアプリをデプロイする処理を追加](./steps/P2-06-a.md)
      1. [CI/CD を体験](./steps/P2-07-a.md)<br><br>
 
   1. **UI アプリ**  
      演習 1 で作成した **UI アプリのリポジトリ**に対して、以下の演習を実施し、GitHub Actions を使用したアプリケーションのデプロイワークフローを作成 
 
      1. 上記 **API アプリ**の a〜e の手順を同様に実施
-     1. [Container App にアプリをデプロイする処理を追加](./steps/P2-06-b.md)
+     1. [Azure Container Apps にアプリをデプロイする処理を追加](./steps/P2-06-b.md)
      1. [CI/CD を体験](./steps/P2-07-b.md)<br><br>     
 
 - **(Option) リソースのクリンアップ**
