@@ -7,10 +7,17 @@
 
 お持ちでない場合は以下のリンク先で作成するか、提供されたチケット類がある場合は、提供元からの情報に従いアカウントを作成してください。
 
-   - [**Microsoft Azure**](https://docs.microsoft.com/ja-jp/dotnet/azure/create-azure-account)
+   - [**Microsoft Azure**](https://docs.microsoft.com/ja-jp/dotnet/azure/create-azure-account)  
+     - Azure 上にリソースを作成するために必要になります。
+     - 本ハンズオンで使用するサブスクリプションの状態が下記のように `アクティブ` であることを、[Azure ポータル](https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade)より確認してください。
+       ![image](https://user-images.githubusercontent.com/4566555/222639780-761a1336-50b2-496c-901a-c8859f62b502.png)  
+     
+     - ご利用のサブスクリプションの \[アクセス制御 (IAM)\] を開いて、`所有者` ロールもしくは `共同作成者` ロールとしてご利用のアカウントに割り当てられていることも併せて確認してください。  
+       ![image](https://user-images.githubusercontent.com/4566555/222640408-a55a4e1c-501a-4a82-ab45-15531eb17324.png)
 
-   - [**GitHub**](https://github.com/join)
 
+   - [**GitHub**](https://github.com/join)  
+     - 演習用リポジトリを作成、および、GitHub Actions を使用するために必要になります。
 
 
 ## 2. ローカル開発環境
@@ -24,7 +31,7 @@
 
       なお Azure CLI のバージョンが古いと動作しないコマンドもありますので、既にインストールされている場合は、以下のドキュメントを参考に更新を行ってください。
 
-      -[**Azure CLI 更新する方法**](https://docs.microsoft.com/ja-jp/cli/azure/update-azure-cli)
+      - [**Azure CLI 更新する方法**](https://docs.microsoft.com/ja-jp/cli/azure/update-azure-cli)
 
       何らかの事情でローカル環境で Azure CLI が使用できない場合は、Azure ポータルから Azure Cloud Shell を使用することができます。
 
