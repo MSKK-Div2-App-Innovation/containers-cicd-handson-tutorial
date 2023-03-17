@@ -52,7 +52,7 @@
 
 ## 3. 演習で使用するプロジェクトの入手
 このハンズオンでは、ミュージック ストアを模したサービスを使用します。同サービスはバックエンド サービスとして API を提供する
-[**containerapps-albumapi-javascript**]( https://github.com/horihiro/containerapps-albumapi-javascript) と フロントエンド サービスとして Web UI を提供する　[**containerapps-albumui**](https://github.com/horihiro/containerapps-albumui) の 2 つのシンプルな Node.js プロジェクトで構成されています。
+[**containerapps-albumapi-javascript**]( https://github.com/MSKK-Div2-App-Innovation/containerapps-albumapi-javascript) と フロントエンド サービスとして Web UI を提供する　[**containerapps-albumui**](https://github.com/MSKK-Div2-App-Innovation/containerapps-albumui) の 2 つのシンプルな Node.js プロジェクトで構成されています。
 
 この 2 つのプロジェクトは GitHub に Template リポジトリとして公開されているので、リポジトリのページにある \[**Use this template**\] ボタンを使用してコピーを行います。
 
@@ -62,7 +62,7 @@
 
 - **API アプリ**
     1. 以下の URL にアクセスし、画面内のボタン `[Use this template]` をクリックします  
-      https://github.com/horihiro/containerapps-albumapi-javascript  
+      https://github.com/MSKK-Div2-App-Innovation/containerapps-albumapi-javascript  
       <img src="../images/common-03-01.png" width="700">
       <br>
     
@@ -81,7 +81,7 @@
  
 -  **UI アプリ**
    - 同様の作業を以下のリポジトリに対しても行います
-   https://github.com/horihiro/containerapps-albumui
+   https://github.com/MSKK-Div2-App-Innovation/containerapps-albumui
 
 <br><br>
 
